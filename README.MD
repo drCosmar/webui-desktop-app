@@ -1,14 +1,14 @@
 # WebUI Desktop App for AUTO1111
 
 **Table of Contents**
-*   Introduction
-*   Features
-*   Requirements
-*   Installation
-*   Usage
-*   Contributing
-*   License
-*   Credits
+*   **Introduction**
+*   **Features**
+*   **Requirements**
+*   **Installation**
+*   **Usage**
+*   **Contributing**
+*   **License**
+*   **Credits**
 
 **Introduction**
 
