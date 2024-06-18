@@ -1,7 +1,6 @@
 # WebUI Desktop App for AUTO1111
 
-**Table of Contents**
-
+## Table of Contents <a name="table-of-contents"></a>
 *   [Introduction](#introduction)
 *   [Features](#features)
 *   [Requirements](#requirements)
