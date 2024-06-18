@@ -2,14 +2,14 @@
 
 **Table of Contents**
 
-*   Introduction
-*   Features
-*   Requirements
-*   Installation
-*   Usage
-*   Contributing
-*   License
-*   Credits
+*   [Introduction](#introduction)
+*   [Features](#features)
+*   [Requirements](#requirements)
+*   [Installation](#installation)
+*   [Usage](#usage)
+*   [Contributing](#contributing)
+*   [License](#license)
+*   [Credits](#credits)
 
 **Introduction**
 
