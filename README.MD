@@ -1,14 +1,14 @@
 # WebUI Desktop App for AUTO1111
 
-## Table of Contents <a name="table-of-contents"></a>
-*   [Introduction](#introduction)
-*   [Features](#features)
-*   [Requirements](#requirements)
-*   [Installation](#installation)
-*   [Usage](#usage)
-*   [Contributing](#contributing)
-*   [License](#license)
-*   [Credits](#credits)
+**Table of Contents**
+*   Introduction
+*   Features
+*   Requirements
+*   Installation
+*   Usage
+*   Contributing
+*   License
+*   Credits
 
 **Introduction**
 
@@ -73,5 +73,3 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 *   Full credit for WebUI design and Stable Diffusion implementation goes to AUTO1111: [https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 *   Logo credit: ParityError on GitHub
-
-<script src="https://gist.githubusercontent.com/drCosmar/08b47bbaef5fa0b85f261e696a209e78/raw/ea0c2af44d76ca09e34b2d93b1f41ac4612af453/scroll.js"></script>
