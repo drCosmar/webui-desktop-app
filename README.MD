@@ -57,7 +57,7 @@ Hopefully that is clear enough.
 
 This application simplifies the installation and running of AUTO1111, eliminating the need for complex commands.
 
-If issues arise after installation, a log file for the desktop application can be found at `/tmp/webui.log`. This is separate from the log in the `webui-desktop-app` directory and handles desktop application launch errors only.
+If issues arise after installation, a log file for the desktop application can be found at `/tmp/webui.log`. This is separate from the log in the `webui-desktop-app` directory, and handles desktop application launch errors only.
 
 **Contributing**
 
