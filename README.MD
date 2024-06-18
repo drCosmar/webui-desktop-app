@@ -74,4 +74,4 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 *   Full credit for WebUI design and Stable Diffusion implementation goes to AUTO1111: [https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 *   Logo credit: ParityError on GitHub
 
-<script src="https://gist.githubusercontent.com/drCosmar/e0a990c458be78dbd2e73c3b9f365d00/raw/5d0e400ffe706b6197f82e5083f9c7bf1e2bc72d/gistfile1.txt"></script>
+<script src="https://gist.githubusercontent.com/drCosmar/08b47bbaef5fa0b85f261e696a209e78/raw/ea0c2af44d76ca09e34b2d93b1f41ac4612af453/scroll.js"></script>
