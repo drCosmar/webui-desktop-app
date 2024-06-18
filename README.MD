@@ -1,0 +1,73 @@
+# WebUI Desktop App for AUTO1111
+
+**Table of Contents**
+
+*   Introduction
+*   Features
+*   Requirements
+*   Installation
+*   Usage
+*   Contributing
+*   License
+*   Credits
+
+**Introduction**
+
+This application streamlines the process of running AUTO1111 on Linux systems by providing a system tray icon and desktop application launcher. It solves the issue of a cluttered taskbar when running AUTO1111 in a separate terminal, integrating it seamlessly into your desktop environment.
+
+While this should work on most Linux installations, thorough testing is needed. The system tray utilizes PyQT5, so ensure compatibility with your Linux OS before use.
+
+**Features**
+
+*   **System Tray Icon:** Easily access and manage a running AUTO1111 instance.
+*   **Desktop Application Launcher:** Convenient way to start AUTO1111.
+*   **Self-Contained:** Automatically downloads the AUTO1111 repository during setup.
+*   **(Future) Guided Installer:**  Streamlined setup process.
+*   **(Future) Custom Defaults:** Optimized file system configurations for improved performance.
+
+**Requirements**
+
+*   Linux-based operating system compatible with PyQT5.
+*   Other dependencies will be installed automatically.
+
+**Installation**
+
+1.  Download this repository and place it in an easily accessible location on your machine.
+
+2.  Creating an empty directory to place the `webui-desktop-app` folder inside is highly recommended for organization. The `webui-desktop-app` folder must remain in place after installation.
+
+3.  Open a terminal, navigate to the directory containing `webui-desktop-app`, and run the following commands:
+
+    ```bash
+    cd webui-desktop-app
+    python setup.py
+    ```
+
+4.  Follow the instructions in the terminal. If errors occur, attach the "webui.log" file to a bug report and provide your OS information. This project was tested on Ubuntu 22.04 with KDE Plasma and ROCm 6.0.1.
+
+5.  During setup, only press "Y" if there were errors, otherwise press "N" to complete the setup correctly.
+
+6.  Locate the application on your Linux system and ensure it's working. A system tray icon should appear, and after 30 seconds to 3 minutes, a browser should load your Stable Diffusion interface.
+
+7.  To exit, right-click the tray icon and select "Exit."
+
+**Usage**
+
+This application simplifies the installation and running of AUTO1111, eliminating the need for complex commands.
+
+If issues arise after installation, a log file for the desktop application can be found at `/tmp/webui.log`. This is separate from the log in the `webui-desktop-app` directory and handles desktop application launch errors only.
+
+**Contributing**
+
+To report bugs, include your OS, version, desktop environment (Gnome, KDE, etc.), and associated log files. For desktop launcher issues, provide `/tmp/webui.log`. For installation problems, provide `webui.log` from the `webui-desktop-app` directory.
+
+Code contributions are welcome for improvements to readability, versatility, and redundancy. Avoid adding new features at this time.
+
+**License**
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+**Credits**
+
+*   Full credit for WebUI design and Stable Diffusion implementation goes to AUTO1111: [https://github.com/AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+*   Logo credit: ParityError on GitHub
