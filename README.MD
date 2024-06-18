@@ -50,7 +50,7 @@ Hopefully that is clear enough.
 
 6. Only press "Y" if there were errors, otherwise press "N" to complete the AUTO1111 webui appeared to function as intended (a webpage opened in your browser with a local host address "127.0.0.1/7860" typically).
 
-6.  Locate the application on your Linux system and ensure it's working. A system tray icon should appear, and after 30 seconds to 3 minutes, a browser should load your Stable Diffusion interface.
+6.  Locate the application on your Linux system and ensure it's working. A system tray icon should appear, and after 30 seconds to 3 minutes, a browser should load your Stable Diffusion interface. With a KDE Plasma environment this would be inside the "Application launcher" at the bottom left. You can search for "WebUI Server" to locate it mroe easily.
 
 7.  To exit, right-click the tray icon and select "Exit."
 
