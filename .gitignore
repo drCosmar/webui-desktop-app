@@ -1,0 +1,19 @@
+# This is a comment (lines starting with # are ignored)
+
+# Ignore specific files
+my_secret_file.txt
+temp.log
+
+# Ignore all files of a certain type
+*.tmp
+*.log
+
+# Ignore directories
+node_modules/
+__pycache__/
+
+# Ignore files in specific directories
+/build/*.js
+
+# Exclude a file from being ignored (if previously matched)
+!important.txt
