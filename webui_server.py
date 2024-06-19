@@ -15,16 +15,13 @@ class Runner(Utils):
     def __init__(self, log_lvl=10):
         super().__init__(log_lvl)
 
-        # Check for existing instance
         if self.is_running():
             print("Another instance is already running.")
             self.show_instance_running_dialog()
             sys.exit(1)
 
-        # Create lock file
         self.create_lockfile()
 
-        # Register cleanup handler
         signal.signal(signal.SIGTERM, self.cleanup)
         signal.signal(signal.SIGINT, self.cleanup)
 
@@ -145,15 +142,12 @@ class Runner(Utils):
 
 if __name__ == "__main__":
     run = Runner(LOGLEVEL)
-    # Path to your icon file
-    icon_path = run.icon  # Or use "path/to/your/icon.ico"
+    icon_path = run.icon
 
-    # Launch the WebUI
     webui_pid = run.launch_webui(hidden=HIDDEN, headless=HEADLESS)
     run.save_pid(webui_pid, run.webui_pid_fp)
 
     tray_pid = os.getpid()
     run.save_pid(tray_pid, run.tray_pid_fp)
 
-    # Start the system tray icon
     run.create_tray_icon(icon_path)

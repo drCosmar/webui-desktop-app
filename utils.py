@@ -39,14 +39,12 @@ class Utils:
         try:
             if log_file_path:
                 with open(log_file_path, "a") as log_file:
-                    # Temporarily remove stream handler
                     stream_handler = None
                     for handler in log.handlers:
                         if isinstance(handler, logging.StreamHandler):
                             stream_handler = handler
                             log.removeHandler(handler)
                             break
-                    # Use Popen for sudo commands to handle password prompt
                     if requires_sudo:
                         command = command.split(" ")
                         proc = subprocess.Popen(command, stdout=log_file, stderr=subprocess.PIPE)
@@ -55,7 +53,6 @@ class Utils:
                     else:
                         completed_process = subprocess.run(command, stdout=log_file, stderr=subprocess.PIPE, shell=True)
                         result = completed_process.returncode
-                    # Restore stream handler
                     if stream_handler:
                         log.addHandler(stream_handler)
                     if isinstance(command, list):
@@ -239,7 +236,6 @@ class Setup(Utils):
         conda_env_name = "AUTO1111"
         script_path = "../webui.sh"
 
-        # Commands to install requirements and run webui.sh
         installs = [
             f"conda run -n {conda_env_name} pip install -r requirements.txt",
             f"source {activate_path} {conda_env_name} && exec bash -c '\"{script_path}\" 2>&1 | tee \"{self.log}\"'"
@@ -385,12 +381,11 @@ python3 {script_file} >> /tmp/webui_server.log 2>&1
         home_dir = pathlib.Path.home()
         app_dir = home_dir / ".local" / "share" / "applications"
         icon_dir = home_dir / ".local" / "share" / "icons"
-        #systemd_dir = "/etc/systemd/system"
 
         app_dir.mkdir(parents=True, exist_ok=True)
         icon_dir.mkdir(parents=True, exist_ok=True)
 
-        script_dir = self.root  # Replace with your actual script name
+        script_dir = self.root 
         wrapper_path = app_dir / "webui-server-wrapper.sh"
         icon_file_src = script_dir / "icon" / icon_file
 
@@ -399,15 +394,11 @@ python3 {script_file} >> /tmp/webui_server.log 2>&1
         wrapper_file_dst = app_dir / "webui-server-wrapper.sh"
 
         self.create_desktop_entry(wrapper_path, icon_file_dst, desktop_file_dst)
-        # Systemd is under development and not likely to be implimented in this project.
-        #self.create_systemd_entry(script_path, systemd_dir / f"{app_name}.service")
         self.add_desktop_file_to_kde(desktop_file_dst)
         self.create_wrapper_file(script_file, wrapper_file_dst)
 
-        # Copy the icon file
         shutil.copy(icon_file_src, icon_file_dst)
 
-        # Make the .desktop file executable
         desktop_file_dst.chmod(desktop_file_dst.stat().st_mode | stat.S_IEXEC)
         desktop_file_dst.chmod(wrapper_file_dst.stat().st_mode | stat.S_IEXEC)
 
