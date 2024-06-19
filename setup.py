@@ -12,6 +12,7 @@ HEADLESS = os.environ["WEBUI_HEADLESS"]
 
 if __name__ == "__main__":
     setup.run_prerequisites()
+    setup.webui_sh_first_run_conda()
     from dotenv import load_dotenv
     load_dotenv()
     if not bool(os.environ["WEBUI_INSTALLATION_SUCCESS"]):

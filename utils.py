@@ -232,20 +232,17 @@ class Setup(Utils):
         webui_sh_path = pathlib.Path(self.root.parent, "webui.sh")
         webui_sh_path.chmod(webui_sh_path.stat().st_mode | stat.S_IEXEC)
         activate_path = self.get_conda_activate_path()
-        print(activate_path)
-        conda_env_name = "AUTO1111"
-        script_path = "../webui.sh"
 
         installs = [
-            f"conda run -n {conda_env_name} pip install -r requirements.txt",
-            f"source {activate_path} {conda_env_name} && exec bash -c '\"{script_path}\" 2>&1 | tee \"{self.log}\"'"
+            f"conda run -n AUTO1111 pip install -r requirements.txt",
+            f"source {activate_path} AUTO1111 && exec bash -c '\"../webui.sh\" 2>&1 | tee \"{self.log}\"'"
         ]
 
         self.terminal_divider()
         print("Wait for webui.sh to finish installing, and the browser page to load. Then cntrl+c to close the webui.sh terminal.")
         self.terminal_divider()
         for install in installs:
-            if install.endswith(f"\"{script_path}\" 2>&1 | tee \"{self.log}\"'"):
+            if install.endswith(f"\",,/webui.sh\" 2>&1 | tee \"{self.log}\"'"):
                 if os.environ.get("DESKTOP_SESSION") == "gnome":
                     terminal = ['gnome-terminal', '--', 'bash', '-c']
                 elif os.environ.get("DESKTOP_SESSION") in ["kde", "plasma"]:
@@ -310,7 +307,7 @@ you can do this by running 'conda env remove AUTO1111'")
         ## Printout logic needed to guide users.
         ## logging and appending to log file needed.
         #symlinks are next
-     
+    # Under development. May be scrapped.
     def create_systemd_entry(self, script_path, systemd_path):
         if self.conda_env:
             exec_command = f'source activate {self.conda_env} && python3 {script_path}'
