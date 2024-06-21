@@ -1,8 +1,8 @@
 Package: webui-server
 Version: 0.9a
 Section: base
-Priority: optional
-Architecture: all
+Priority: medium
+Architecture: Linux Python
 Depends: python3, python3-pyqt5, python3-pillow
 Maintainer: Dr.Cosmar <deiktis.yeroc@outlook.com>
 Description: A system tray icon to manage WebUI Server.
