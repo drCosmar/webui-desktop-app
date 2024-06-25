@@ -12,10 +12,12 @@ HEADLESS = os.environ["WEBUI_HEADLESS"]
 
 if __name__ == "__main__":
     setup.run_prerequisites()
-    setup.webui_sh_first_run_conda()
+    cont = setup.webui_sh_first_run_conda()
     from dotenv import load_dotenv
     load_dotenv()
     if not bool(os.environ["WEBUI_INSTALLATION_SUCCESS"]):
-        setup.webui_sh_first_run_conda()
         set_key(".env", "WEBUI_INSTALLATION_SUCCESS", "True")
-    setup.main()
+    if cont:
+        setup.main()
+    if not cont:
+        print("Conda first run failed, please check logs and try again.")

@@ -242,7 +242,7 @@ class Setup(Utils):
         print("Wait for webui.sh to finish installing, and the browser page to load. Then cntrl+c to close the webui.sh terminal.")
         self.terminal_divider()
         for install in installs:
-            if install.endswith(f"\",,/webui.sh\" 2>&1 | tee \"{self.log}\"'"):
+            if install.endswith(f"\"../webui.sh\" 2>&1 | tee \"{self.log}\"'"):
                 if os.environ.get("DESKTOP_SESSION") == "gnome":
                     terminal = ['gnome-terminal', '--', 'bash', '-c']
                 elif os.environ.get("DESKTOP_SESSION") in ["kde", "plasma"]:
@@ -266,9 +266,10 @@ and bash script:\n'stable-diffusion-webui'\n'webui.sh'\
 \nMake sure you also remove the environment 'AUTO1111' if necessary.\
 you can do this by running 'conda env remove AUTO1111'")
             self.terminal_divider()
+            return False
         if errors.lower() == "n":
             self.log.info("WebUI.sh has been succesfully installed. Now moving creating symlinks for easier file management.")
-            
+            return True
     #pyenv version still under development.      
     def webui_sh_first_run_pyenv(self):
         venv_path = self.root / "webui-desktop-app" / "AUTO1111"  # Set this to your actual venv path
@@ -368,6 +369,7 @@ python3 {script_file} >> /tmp/webui_server.log 2>&1
 """
         with open(wrapper_file_path, "w") as f:
             f.write(wrapper_content.strip())
+        subprocess.run(["chmod", "+x", wrapper_file_path])
 
     def main(self):
         app_name = "webui-server"
