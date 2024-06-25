@@ -212,6 +212,7 @@ class Setup(Utils):
         commands = self.linux_commands_by_distro()
         if self.is_conda_installed():
             if not self.is_conda_environment_AUTO1111_present():
+                commands.insert(0, "conda run -n AUTO1111 pip install -r requirements.txt")
                 commands.insert(0, "conda create --name AUTO1111 python=3.10.6 -y")
                 commands.insert(0, "conda clean --all -y")
                 commands.insert(0, "pip cache purge")
@@ -233,29 +234,22 @@ class Setup(Utils):
         webui_sh_path.chmod(webui_sh_path.stat().st_mode | stat.S_IEXEC)
         activate_path = self.get_conda_activate_path()
 
-        installs = [
-            f"conda run -n AUTO1111 pip install -r requirements.txt",
-            f"source {activate_path} AUTO1111 && exec bash -c '\"../webui.sh\" 2>&1 | tee \"{self.log}\"'"
-        ]
+        install = f"source {activate_path} AUTO1111 && exec bash -c '\"../webui.sh\" 2>&1 | tee \"{self.log}\"'"
 
         self.terminal_divider()
         print("Wait for webui.sh to finish installing, and the browser page to load. Then cntrl+c to close the webui.sh terminal.")
         self.terminal_divider()
-        for install in installs:
-            if install.endswith(f"\"../webui.sh\" 2>&1 | tee \"{self.log}\"'"):
-                if os.environ.get("DESKTOP_SESSION") == "gnome":
-                    terminal = ['gnome-terminal', '--', 'bash', '-c']
-                elif os.environ.get("DESKTOP_SESSION") in ["kde", "plasma"]:
-                    terminal = ['konsole', '-e', 'bash', '-c']
-                else:
-                    terminal = ['xterm', '-hold', '-e', 'bash', '-c']
-                command = terminal + [install]
-            else:
-                command = ["bash", "-c", install]
-            proc = subprocess.Popen(command)
-            proc_status = proc.wait()
-            if proc_status == 0 and install != installs[0]:
-                self.append_and_cleanup_log()
+        if os.environ.get("DESKTOP_SESSION") == "gnome":
+            terminal = ['gnome-terminal', '--', 'bash', '-c']
+        elif os.environ.get("DESKTOP_SESSION") in ["kde", "plasma"]:
+            terminal = ['konsole', '-e', 'bash', '-c']
+        else:
+            terminal = ['xterm', '-hold', '-e', 'bash', '-c']
+        command = terminal + [install]
+        proc = subprocess.Popen(command)
+        proc_status = proc.wait()
+        if proc_status == 0:
+            self.append_and_cleanup_log()
         self.terminal_divider("+")
         errors = input("Where there any errors that you need to fix when running webui.sh?\n###Y/N:")
         self.terminal_divider()
