@@ -2,7 +2,9 @@
 
 # Ignore specific files
 my_secret_file.txt
-temp.log
+webui.log
+.gitignore
+webui.lock
 
 # Ignore all files of a certain type
 *.tmp
