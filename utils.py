@@ -357,7 +357,7 @@ X-KDE-Env=VAR1=value1;VAR2=value2;  # Customize these if needed
 #!/bin/bash
 echo "$(date) - WebUI Server started" >> /tmp/webui_server.log
 source {conda_active_path}
-conda activate {self.conda_env}
+conda activate AUTO1111
 cd {self.root}
 python3 {script_file} >> /tmp/webui_server.log 2>&1
 """
